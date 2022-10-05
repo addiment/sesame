@@ -19,8 +19,8 @@ jobs:
             fail-fast: false
             matrix:
                 platform:
-                - { name: Windows (mingw32), os: windows-latest, shell: 'msys2 {0}', msystem: mingw32, msys-env: mingw-w64-i686 }
-                - { name: Windows (mingw64), os: windows-latest, shell: 'msys2 {0}', msystem: mingw32, msys-env: mingw-w64-x86_64 }
+                - { name: Windows (mingw32), os: windows-latest, shell: 'msys2 {0}', msystem: MINGW32, msys-env: mingw-w64-i686 }
+                - { name: Windows (mingw64), os: windows-latest, shell: 'msys2 {0}', msystem: MINGW64, msys-env: mingw-w64-x86_64 }
                 - { name: Ubuntu,            os: ubuntu-latest,  shell: sh }
 
         steps:
@@ -29,8 +29,10 @@ jobs:
           uses: msys2/setup-msys2@v2
           with:
               msystem: ${{ matrix.platform.msystem }}
+              update: true
               install: >-
                   ${{ matrix.platform.msys-env }}-toolchain
+                  ${{ matrix.platform.msys-env }}-make
                   ${{ matrix.platform.msys-env }}-SDL2
 
         - name: Setup Linux dependencies
