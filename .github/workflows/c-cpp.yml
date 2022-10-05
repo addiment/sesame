@@ -1,0 +1,48 @@
+name: C/C++ CI
+
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+
+jobs:
+    build:
+        name: ${{ matrix.platform.name }}
+        runs-on: ${{ matrix.platform.os }}
+        
+        defaults:
+            run:
+                shell: ${{ matrix.platform.shell }}
+            
+        strategy:
+            fail-fast: false
+            matrix:
+                platform:
+                - { name: Windows (mingw32), os: windows-latest, shell: 'msys2 {0}', msystem: mingw32, msys-env: mingw-w64-i686 }
+                - { name: Windows (mingw64), os: windows-latest, shell: 'msys2 {0}', msystem: mingw32, msys-env: mingw-w64-x86_64 }
+                - { name: Ubuntu,            os: ubuntu-latest,  shell: sh }
+
+        steps:
+        - name: Set up MSYS2
+          if: matrix.platform.shell == 'msys2 {0}'
+          uses: msys2/setup-msys2@v2
+          with:
+              msystem: ${{ matrix.platform.msystem }}
+              install: >-
+                  ${{ matrix.platform.msys-env }}-toolchain
+                  ${{ matrix.platform.msys-env }}-SDL2
+
+        - name: Setup Linux dependencies
+          if: runner.os == 'Linux'
+          run: |
+              sudo apt-get update
+              sudo apt-get install build-essential make pkg-config libsdl2-dev
+
+        - uses: actions/checkout@v3
+        - name: make (linux)
+          if: runner.os == 'Linux'
+          run: make
+        - name: make (windows)
+          if: runner.os == 'Windows'
+          run: make msys
