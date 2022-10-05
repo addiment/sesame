@@ -5,7 +5,7 @@ CFLAGS = $(shell sdl2-config --cflags --libs)
 
 default: $(OUT)
 
-msys: OUT = $(OUT).exe
+msys: OUT := $(OUT).exe
 msys: $(OUT)
 
 $(OUT): $(SRC)
