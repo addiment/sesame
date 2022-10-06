@@ -6,6 +6,7 @@ CFLAGS = $(shell sdl2-config --cflags --libs)
 default: $(OUT)
 
 msys: OUT := $(OUT).exe
+msys: CFLAGS := -mmingw32 $(CFLAGS)
 msys: $(OUT)
 
 $(OUT): $(SRC)
