@@ -13,7 +13,6 @@ LDFLAGS = $(shell sdl2-config --libs)
 all: $(OUT)
 
 msys: OUT := $(OUT).exe
-msys: CFLAGS := -lmingw32 $(CFLAGS)
 msys: $(OUT)
 
 $(OBJS): $(OUTFOLDER)%.o: $(SRCFOLDER)%.cpp
