@@ -32,7 +32,7 @@ jobs:
               update: true
               install: >-
                   ${{ matrix.platform.msys-env }}-toolchain
-                  ${{ matrix.platform.msys-env }}-make
+                  make
                   ${{ matrix.platform.msys-env }}-SDL2
 
         - name: Setup Linux dependencies
