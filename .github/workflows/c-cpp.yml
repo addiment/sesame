@@ -31,8 +31,8 @@ jobs:
               msystem: ${{ matrix.platform.msystem }}
               update: true
               install: >-
+                  base-devel
                   ${{ matrix.platform.msys-env }}-toolchain
-                  make
                   ${{ matrix.platform.msys-env }}-SDL2
 
         - name: Setup Linux dependencies
