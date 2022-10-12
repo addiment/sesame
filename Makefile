@@ -24,7 +24,8 @@ all: $(OUT)
 msys: OUT := $(OUT).exe
 msys: CFLAGS = $(shell pkg-config SDL2 --cflags)
 msys: LDFLAGS = $(shell pkg-config SDL2 --libs) -mconsole
-msys: $(OUT) $(DEPS)
+msys: $(OUT)
+#$(DEPS)
 
 $(DEPS): %.dll:
 	cp $(shell where $@) $(OUTFOLDER)$@

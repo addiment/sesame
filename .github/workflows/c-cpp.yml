@@ -48,5 +48,5 @@ jobs:
         - name: make (windows)
           if: runner.os == 'Windows'
           run: make msys
-        - name: Test sesame
-          run: ./out/sesame
+        # - name: Test sesame
+        #   run: ./out/sesame
