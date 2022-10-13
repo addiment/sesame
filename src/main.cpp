@@ -8,7 +8,7 @@ using namespace std;
 // semvar my beloved
 #define SESAME_VERSION_MAJOR 1
 #define SESAME_VERSION_MINOR 0
-#define SESAME_VERSION_PATCH 0
+#define SESAME_VERSION_PATCH 2
 
 #define VERY_STRONG_PASSWD_LENGTH 16
 #define STRONG_PASSWD_LENGTH 8
