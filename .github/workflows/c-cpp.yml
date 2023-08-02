@@ -16,10 +16,10 @@ jobs:
                 shell: ${{ matrix.platform.shell }}
             
         strategy:
-            fail-fast: false
+            fail-fast: true
             matrix:
                 platform:
-                - { name: Windows (mingw32), os: windows-latest, shell: 'msys2 {0}', msystem: MINGW32, msys-env: mingw-w64-i686 }
+#                 - { name: Windows (mingw32), os: windows-latest, shell: 'msys2 {0}', msystem: MINGW32, msys-env: mingw-w64-i686 }
                 - { name: Windows (mingw64), os: windows-latest, shell: 'msys2 {0}', msystem: MINGW64, msys-env: mingw-w64-x86_64 }
                 - { name: Ubuntu,            os: ubuntu-latest,  shell: sh }
 
