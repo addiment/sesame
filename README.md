@@ -1,3 +1,3 @@
 # sesame - little password generator utility
 
-this version has the linux binary and the windows binary together since I just wanted to share it as soon as I could for now
+Work in progress that doesn't actually work. I made this mostly to experiment with GitHub Actions and Makefiles, the security and functionality of sesame are pretty bad, so I'm gonna call this project "on hold" indefinitely.
